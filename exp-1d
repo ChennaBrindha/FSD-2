@@ -1,0 +1,61 @@
+button_events.html
+html
+CopyEdit
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Button Click Events</title>
+ <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ <h2>Click Event Handler Example</h2>
+ <button id="greetBtn">Greet</button>
+ <button id="changeColorBtn">Change Background</button>
+ <button id="hideTextBtn">Hide Text</button>
+ <p id="displayText">Welcome! Click buttons to see changes.</p>
+ <script src="main.js"></script>
+</body>
+</html>
+main.js
+javascript
+CopyEdit
+// Select buttons and paragraph
+const greetBtn = document.getElementById("greetBtn");
+const colorBtn = document.getElementById("changeColorBtn");
+const hideBtn = document.getElementById("hideTextBtn");
+const text = document.getElementById("displayText");
+// Greet button click
+greetBtn.addEventListener("click", () => {
+ alert("Hello! Have a great day!");
+});
+// Change background color
+colorBtn.addEventListener("click", () => {
+ document.body.style.backgroundColor = "#e0f7fa";
+});
+// Hide text on click
+hideBtn.addEventListener("click", () => {
+ text.style.display = "none";
+});
+styles.css
+css
+CopyEdit
+body {
+ font-family: Verdana, sans-serif;
+ text-align: center;
+ margin-top: 60px;
+}
+button {
+ margin: 10px;
+ padding: 10px 20px;
+ border: none;
+ background-color: #28a745;
+ color: white;
+ font-size: 16px;
+ cursor: pointer;
+}
+button:hover {
+ background-color: #218838;
+}
+#displayText {
+ margin-top: 20px;
+ font-size: 18px;
