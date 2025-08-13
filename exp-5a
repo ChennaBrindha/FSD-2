@@ -1,0 +1,41 @@
+Aim:
+To create a new MySQL database and a table within that database using SQL commands in the 
+MySQL Command Line Client.
+Procedure:
+1. Open the MySQL Command Line Client and log in using your username and password.
+2. Use the CREATE DATABASE command to create a new database.
+3. Select the database using the USE command.
+4. Create a table using the CREATE TABLE command with appropriate column definitions.
+5. Verify the creation using the SHOW and DESC commands.
+SQL Code:
+-- Step 1: Create a database
+CREATE DATABASE CollegeDB;
+-- Step 2: Use the created database
+USE CollegeDB;
+-- Step 3: Create a table named 'students'
+CREATE TABLE students (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ name VARCHAR(100),
+ age INT,
+ department VARCHAR(50)
+);
+-- Step 4: Show available tables
+SHOW TABLES;
+-- Step 5: Describe the structure of the 'students' table
+DESC students;
+Expected Output:
+After executing the above commands:
+ SHOW TABLES; will output:
++------------------+
+| Tables_in_CollegeDB |
++------------------+
+| students |
++------------------+
+ DESC students; will output:
++------------+--------------+------+-----+---------+----------------+
+| Field | Type | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+----------------+
+| id | int | NO | PRI | NULL | auto_increment |
+| name | varchar(100) | YES | | NULL | |
+| age | int | YES | | NULL | |
+| department | varchar(50) | YES | | NULL | 
