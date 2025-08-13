@@ -1,0 +1,53 @@
+Aim:
+To write SQL queries to:
+ Create a table
+ Insert records into the table
+ Update records in the table
+using the MySQL Command Line Client.
+Procedure:
+1. Open MySQL Command Line Client and select the desired database using USE.
+2. Create a table using CREATE TABLE.
+3. Insert records using INSERT INTO.
+4. Modify data using UPDATE.
+5. Use SELECT * FROM to verify changes.
+SQL Code:
+-- Step 1: Use the database
+USE CollegeDB;
+-- Step 2: Create a table called 'courses'
+CREATE TABLE courses (
+ course_id INT AUTO_INCREMENT PRIMARY KEY,
+ course_name VARCHAR(100),
+ instructor VARCHAR(100),
+ duration INT -- duration in weeks
+);
+-- Step 3: Insert data into the 'courses' table
+INSERT INTO courses (course_name, instructor, duration)
+VALUES 
+('Database Systems', 'Dr. Smith', 10),
+('Operating Systems', 'Prof. Johnson', 8),
+('Web Technologies', 'Ms. Linda', 12);
+-- Step 4: View inserted records
+SELECT * FROM courses;
+-- Step 5: Update a course's duration
+UPDATE courses
+SET duration = 14
+WHERE course_name = 'Web Technologies';
+-- Step 6: View updated records
+SELECT * FROM courses;
+Expected Output:
+After Step 4:
++-----------+--------------------+----------------+----------+
+| course_id | course_name | instructor | duration |
++-----------+--------------------+----------------+----------+
+| 1 | Database Systems | Dr. Smith | 10 |
+| 2 | Operating Systems | Prof. Johnson | 8 |
+| 3 | Web Technologies | Ms. Linda | 12 |
++-----------+--------------------+----------------+----------+
+After Step 6:
++-----------+--------------------+----------------+----------+
+| course_id | course_name | instructor | duration |
++-----------+--------------------+----------------+----------+
+| 1 | Database Systems | Dr. Smith | 10 |
+| 2 | Operating Systems | Prof. Johnson | 8 |
+| 3 | Web Technologies | Ms. Linda | 14 |
++-----------+--------------------+----------------+----------+
