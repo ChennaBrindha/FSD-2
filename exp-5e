@@ -1,0 +1,70 @@
+Aim:
+To create a project database directory and initialize a database.sql file that can be used to set 
+up the database structure and sample data for integration with a backend API.
+Procedure:
+1. Create a project folder (e.g., student-api).
+2. Inside the project, create a folder named database/.
+3. Inside the database/ folder, create a file named database.sql.
+4. Write SQL code to:
+o Create the database
+o Create tables
+o Insert initial data
+5. Use this SQL file to initialize the database from MySQL CLI or Workbench.
+6. Connect this database to an API using backend code (e.g., Express.js + MySQL).
+Directory Structure:
+student-api/
+├── database/
+│ └── database.sql
+├── app.js
+├── package.json
+SQL Code in database/database.sql:
+-- Create database
+CREATE DATABASE IF NOT EXISTS StudentDB;
+-- Use the created database
+USE StudentDB;
+-- Create 'students' table
+CREATE TABLE IF NOT EXISTS students (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ name VARCHAR(100) NOT NULL,
+ age INT,
+ department VARCHAR(50)
+);
+-- Insert sample data
+INSERT INTO students (name, age, department) VALUES
+('Alice', 20, 'CSE'),
+('Bob', 22, 'ECE'),
+('Charlie', 21, 'MECH');
+How to Run the SQL File:
+✅ From MySQL Command Line Client:
+mysql -u root -p < database/database.sql
+✅ From MySQL Workbench:
+1. Open database.sql.
+2. Click Execute (⚡ lightning bolt).
+Integration Example (Optional): Connecting API in app.js):
+const express = require('express');
+const mysql = require('mysql2');
+const app = express();
+const PORT = 3000;
+const connection = mysql.createConnection({
+ host: 'localhost',
+ user: 'root',
+ password: '',
+ database: 'StudentDB'
+});
+connection.connect((err) => {
+ if (err) throw err;
+console.log('Connected to MySQL Database');
+});
+app.get('/students', (req, res) => {
+ connection.query('SELECT * FROM students', (err, results) => {
+ if (err) throw err;
+ res.json(results);
+ });
+});
+app.listen(PORT, () => {
+ console.log(`API running at http://localhost:${PORT}`);
+});
+Output:
+ The database and table are created successfully.
+ The database.sql file can be reused for API projects.
+ The API can fetch data from the MySQL database using a RESTful endpoint.
