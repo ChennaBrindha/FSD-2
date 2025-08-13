@@ -1,0 +1,69 @@
+Aim:
+To demonstrate how to use subqueries in MySQL for extracting and filtering data based on results 
+from another query.
+Procedure:
+1. Open MySQL Command Line Client and use an existing database (e.g., CollegeDB).
+2. Create two related tables: students and departments.
+3. Populate both tables with sample data.
+4. Write subqueries inside SELECT, WHERE, and FROM clauses.
+5. View results and verify accuracy.
+SQL Code:
+Step 1: Use the database
+USE CollegeDB;
+-- Step 2: Create 'departments' table
+CREATE TABLE departments (
+ dept_id INT PRIMARY KEY,
+ dept_name VARCHAR(50)
+);
+-- Step 3: Create 'students' table
+CREATE TABLE students (
+ id INT PRIMARY KEY,
+ name VARCHAR(100),
+ age INT,
+ dept_id INT,
+ FOREIGN KEY (dept_id) REFERENCES departments(dept_id)
+);
+-- Step 4: Insert data into departments
+INSERT INTO departments VALUES 
+(1, 'CSE'),
+(2, 'ECE'),
+(3, 'MECH');
+-- Step 5: Insert data into students
+INSERT INTO students VALUES 
+(101, 'Alice', 20, 1),
+(102, 'Bob', 21, 2),
+(103, 'Charlie', 22, 1),
+(104, 'David', 23, 3),
+(105, 'Eve', 19, 2);
+-- Step 6: Subquery Example 1: List students who belong to the 'CSE' department
+SELECT name 
+FROM students 
+WHERE dept_id = (
+ SELECT dept_id 
+ FROM departments 
+ WHERE dept_name = 'CSE'
+);
+-- Step 7: Subquery Example 2: Get names of departments where students are older 
+than 21
+SELECT DISTINCT dept_name 
+FROM departments 
+WHERE dept_id IN (
+ SELECT dept_id 
+ FROM students 
+ WHERE age > 21
+);
+Expected Output:
+Subquery Example 1 Output:
++--------+
+| name |
++--------+
+| Alice |
+| Charlie|
++--------+
+Subquery Example 2 Output:
++-----------+
+| dept_name |
++-----------+
+| CSE |
+| MECH |
++-----------+
