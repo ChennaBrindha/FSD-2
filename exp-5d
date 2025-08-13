@@ -1,0 +1,40 @@
+Aim:
+To demonstrate how to create, save, and execute SQL script files in MySQL Workbench to 
+create a database, tables, and insert data.
+Procedure:
+1. Open MySQL Workbench.
+2. Click on the “+” icon to start a new SQL tab (or use File > New Query Tab).
+3. In the new tab, write SQL code to create a database and table.
+4. Save the script by selecting File > Save Script As (e.g., college_script.sql).
+5. Click the Execute (lightning bolt icon) to run the script.
+6. Refresh the SCHEMAS section to see the newly created database and table.
+Script File Content (college_script.sql):
+-- Step 1: Create the database
+CREATE DATABASE IF NOT EXISTS CollegeDB;
+-- Step 2: Use the database
+USE CollegeDB;
+-- Step 3: Create the 'students' table
+CREATE TABLE IF NOT EXISTS students (
+ id INT PRIMARY KEY AUTO_INCREMENT,
+ name VARCHAR(100) NOT NULL,
+ age INT,
+ department VARCHAR(50)
+);
+-- Step 4: Insert data into the 'students' table
+INSERT INTO students (name, age, department) VALUES 
+('Alice', 20, 'CSE'),
+('Bob', 21, 'ECE'),
+('Charlie', 22, 'CSE'),
+('David', 23, 'MECH');
+How to Save Script in MySQL Workbench:
+1. Go to File → Save Script As.
+2. Name the file (e.g., college_script.sql) and choose the location.
+3. Click Save.
+Output:
+After executing the script:
+ A database named CollegeDB is created.
+ A table named students is added.
+ 4 records are inserted into the table.
+You can verify using:
+USE CollegeDB;
+SELECT * FROM students;
