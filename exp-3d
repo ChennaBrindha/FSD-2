@@ -1,0 +1,76 @@
+Implementing Forms in React
+Aim:
+To demonstrate how to implement forms in React using controlled components and the useState
+hook to manage form input value
+Procedure:
+1. Create a new React app using:
+npx create-react-app react-form
+2. Navigate to the project directory:
+cd react-form
+3. Open src/App.js and define a form with input fields (Name and Email).
+4. Use useState to manage the values of form inputs.
+5. Handle form submission and display the entered data.
+6. Start the development server using:
+npm start
+Code:
+src/App.js
+import React, { useState } from 'react';
+import './App.css';
+function App() {
+ const [name, setName] = useState('');
+ const [email, setEmail] = useState('');
+ const [submitted, setSubmitted] = useState(false);
+ const handleSubmit = (event) => {
+ event.preventDefault();
+ setSubmitted(true);
+ };
+ return (
+ <div className="App">
+ <h2>React Form Example</h2>
+ <form onSubmit={handleSubmit}>
+ <div>
+ <label>Name: </label>
+ <input 
+ type="text" 
+ value={name} 
+ onChange={(e) => setName(e.target.value)} 
+ required 
+ />
+ </div>
+ <div>
+ <label>Email: </label>
+ <input 
+ type="email" 
+ value={email} 
+ onChange={(e) => setEmail(e.target.value)} 
+ required 
+ />
+ </div>
+ <button type="submit">Submit</button>
+</form>
+ {submitted && (
+ <div className="output">
+ <h4>Form Submitted</h4>
+ <p><strong>Name:</strong> {name}</p>
+ <p><strong>Email:</strong> {email}</p>
+ </div>
+ )}
+ </div>
+ );
+}
+export default App;
+src/index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+Output:
+ Initially, the form is displayed with Name and Email input fields.
+ On submitting the form:
+o The entered values are displayed below the form.
+o Example:
+Form Submitted
+Name: Sai Kiran
+Email: saikiran@example.com
