@@ -1,0 +1,28 @@
+function App() {
+ const [show, setShow] = useState(false);
+ const toggleMessage = () => {
+ setShow(!show);
+ };
+ return (
+ <div className="App">
+ <h2>Conditional Rendering Example</h2>
+ <button onClick={toggleMessage}>
+ {show ? "Hide Message" : "Show Message"}
+ </button>
+ {show && <Message />}
+ </div>
+ );
+}
+export default App;
+src/index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+Output:
+ Initially, only the button appears with text "Show Message".
+ Clicking the button toggles the appearance of the message:
+o Show Message ➝ Displays the message.
+o Hide Message ➝ Hides the message.
