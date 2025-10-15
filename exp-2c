@@ -1,0 +1,96 @@
+Handling Button Click Events in a Functional
+
+Component
+
+Aim:
+
+To demonstrate how to handle button click events inside a React Functional Component using
+
+the onClick event handler.
+
+Procedure:
+
+1. Create a new React app using:npx create-react-app button-events
+
+
+2. Navigate to the project folder:
+
+
+
+cd button-events
+
+3. Open src/App.js.
+
+
+4. Define a functional component and create multiple button click event handlers.
+
+
+5. Use the onClick attribute in buttons to trigger these functions.
+
+
+6. Start the app using npm start and verify the behavior in the browser.
+
+
+
+Code:
+
+src/App.js
+
+import React, { useState } from 'react';
+
+import './App.css';
+
+function ButtonEvents() {
+
+const [message, setMessage] = useState("Click a button to see the action");
+
+const sayHello = () => {
+
+setMessage("Hello, User!");
+
+};
+
+const resetMessage = () => {
+
+setMessage("Click a button to see the action");
+
+};
+
+return (
+
+ <div className="App"> <h2>Handling Button Click Events</h2> <p>{message}</p><button onClick={sayHello}>Say Hello</button>
+
+<button onClick={resetMessage}>Reset</button>
+
+ </div>);
+
+}
+
+export default ButtonEvents;
+
+src/index.js
+
+import React from 'react';
+
+import ReactDOM from 'react-dom/client';
+
+import './index.css';
+
+import ButtonEvents from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(<ButtonEvents />);
+
+Output:
+
+ Initially shows:Click a button to see the action
+
+[Say Hello] [Reset]
+
+ Clicking “Say Hello” updates the message to:
+
+Hello, User!
+
+ Clicking “Reset” resets the message.
+
