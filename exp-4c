@@ -1,0 +1,48 @@
+Printing "Hello World" in the Browser 
+Console using Express.js
+Aim:
+To use Express.js to serve an HTML file containing JavaScript that prints "Hello World" in the 
+browser console (not on the page).
+Procedure:
+1. Create a project folder and initialize:
+mkdir express-browser-console
+cd express-browser-console
+npm init -y
+2. Install Express:
+npm install express
+3. Create two files:
+o app.js (for Express server)
+o public/index.html (for HTML + JS code)
+4. Use Express's static middleware to serve the public folder.
+5. Run the server:
+node app.js
+6. Open browser at http://localhost:3000 and open browser Developer Tools → Console.
+Code:
+app.js
+const express = require('express');
+const app = express();
+const PORT = 3000;
+// Serve static files from the "public" directory
+app.use(express.static('public'));
+// Start server
+app.listen(PORT, () => {
+ console.log(`Server running at http://localhost:${PORT}`);
+});
+public/index.html
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Hello Console</title>
+</head>
+<body>
+ <h1>Check the browser console</h1>
+ <script>
+ console.log("Hello World from Express.js!");
+ </script>
+</body>
+</html>
+Output:
+ Browser View: Displays:
+Check the browser console
+ Console Output (Press F12 > Console tab):
+Hello World from Express.js!
