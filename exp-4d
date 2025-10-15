@@ -1,0 +1,82 @@
+Implementing Basic CRUD Operations using 
+Express.js
+Aim:
+To create a basic Express.js server that performs CRUD operations:
+Create, Read, Update, and Delete on in-memory user data.
+Procedure:
+1. Create a new folder and initialize a Node.js project:
+mkdir express-crud
+cd express-crud
+npm init -y
+2. Install Express:
+npm install express
+3. Create a file named app.js.
+4. Define REST API routes for:
+o GET → Read all users
+o POST → Create a user
+o PUT → Update a user
+o DELETE → Delete a user
+5. Use Postman or browser to test the endpoints.
+6. Run the server:
+node app.js
+Code:
+app.js
+const express = require('express');
+const app = express();
+const PORT = 3000;
+// Middleware to parse JSON
+app.use(express.json());
+// Sample in-memory user data
+let users = [
+ { id: 1, name: 'Alice' },
+ { id: 2, name: 'Bob' }
+];
+// Read: GET all users
+app.get('/users', (req, res) => {
+ res.json(users);
+});
+// Create: POST a new user
+app.post('/users', (req, res) => {
+ const newUser = {
+ id: users.length + 1,
+ name: req.body.name
+ };
+ users.push(newUser);
+ res.status(201).json(newUser);
+});
+// Update: PUT user by id
+app.put('/users/:id', (req, res) => {
+ const userId = parseInt(req.params.id);
+ const updatedName = req.body.name;
+ const user = users.find(u => u.id === userId);
+ if (user) {
+ user.name = updatedName;
+ res.json(user);
+ } else {
+ res.status(404).json({ message: 'User not found' });
+ }
+});
+// Delete: DELETE user by id
+app.delete('/users/:id', (req, res) => {
+ const userId = parseInt(req.params.id);
+ users = users.filter(u => u.id !== userId);
+ res.json({ message: 'User deleted successfully' });
+});
+// Start server
+app.listen(PORT, () => {
+ console.log(`CRUD API running at http://localhost:${PORT}`);
+});
+Testing the API (Use Postman or cURL):
+Operation Method Endpoint Request Body (JSON) Response
+Read GET /users — List of users
+Create POST /users { "name": "Charlie" } New user created
+Update PUT /users/2 { "name": "Bobby" } User 2 updated
+Delete DELETE /users/1 — User 1 deleted confirmation
+Output Example:
+// GET /users
+[
+ { "id": 1, "name": "Alice" },
+ { "id": 2, "name": "Bob" }
+]
+// POST /users { "name": "Charlie" }
+{ "id": 3, "name": "Charlie" }
