@@ -1,0 +1,22 @@
+import React from "react";
+
+function App() {
+  // Step 1: Create an array of items
+  const items = ["Laptop", "Mobile", "Tablet", "Headphones", "Smartwatch"];
+
+  // Step 2: Use map() to render each item dynamically
+  return (
+    <div>
+      <h2>📱 Electronic Items List</h2>
+      <ul>
+        {items.map((item, index) => (
+          <li key={index}>
+            {index + 1}. {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
