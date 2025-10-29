@@ -1,0 +1,90 @@
+Experiment (e): Demonstrating Three Types of JavaScript 
+Functions
+Aim:
+To demonstrate different types of function definitions in JavaScript:
+ Function Declaration
+ Function Expression
+ Arrow Function
+Procedure:
+1. Create an HTML file named function_types.html.
+2. Create a JavaScript file named main.js.
+3. Create a CSS file named styles.css to style the page and buttons.
+4. Add three buttons in the HTML file, each triggering a different function type.
+5. In main.js, define the functions using:
+o Function Declaration
+o Function Expression
+o Arrow Function
+6. Display output in a <p> element when each function is executed.
+7. Link the JavaScript and CSS files to the HTML file.
+8. Save and run the HTML file in a browser to see the result.
+Code:
+function_types.html
+html
+CopyEdit
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Types of JavaScript Functions</title>
+ <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ <h2>Types of JavaScript Functions</h2>
+ <button onclick="greet()">Function Declaration</button>
+ <button id="expressionBtn">Function Expression</button>
+ <button id="arrowBtn">Arrow Function</button>
+ <p id="outputText">Click a button to invoke the function.</p>
+ <script src="main.js"></script>
+</body>
+</html>
+main.js
+javascript
+CopyEdit
+// i. Function Declaration
+function greet() {
+ document.getElementById("outputText").textContent = "Hello from Function 
+Declaration!";
+}
+// ii. Function Expression
+const showMessage = function() {
+ document.getElementById("outputText").textContent = "Hello from Function 
+Expression!";
+};
+document.getElementById("expressionBtn").addEventListener("click", showMessage);
+// iii. Arrow Function
+const arrowFunc = () => {
+ document.getElementById("outputText").textContent = "Hello from Arrow 
+Function!";
+};
+document.getElementById("arrowBtn").addEventListener("click", arrowFunc);
+styles.css
+css
+CopyEdit
+body {
+ font-family: sans-serif;
+ text-align: center;
+ margin-top: 50px;
+}
+button {
+ margin: 10px;
+ padding: 10px 20px;
+ font-size: 16px;
+ background-color: #007acc;
+ color: white;
+ border: none;
+ cursor: pointer;
+}
+button:hover {
+ background-color: #005fa3;
+}
+#outputText {
+ margin-top: 20px;
+ font-size: 18px;
+ font-weight: bold;
+}
+Output:
+ Clicking the "Function Declaration" button displays:
+"Hello from Function Declaration!"
+ Clicking the "Function Expression" button displays:
+"Hello from Function Expression!"
+ Clicking the "Arrow Function" button displays:
+"Hello from Arrow Function!"
