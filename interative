@@ -1,0 +1,22 @@
+import React from "react";
+
+function App() {
+  // Step 1: Create an array of items (can be anything — names, numbers, objects)
+  const fruits = ["Apple", "Banana", "Cherry", "Mango", "Orange"];
+
+  // Step 2: Use map() to render each item inside <li> tags
+  return (
+    <div>
+      <h2>🍎 Fruit List (Rendered using map)</h2>
+      <ul>
+        {fruits.map((fruit, index) => (
+          <li key={index}>
+            {index + 1}. {fruit}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
